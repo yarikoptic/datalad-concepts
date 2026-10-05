@@ -1,16 +1,21 @@
 {
   "pid": "https://example.org/publications/talk-slides-1",
-  "kind": "bibo:Slideshow",
+  "kind": "fabio:Presentation",
   "schema_type": "xyzri:XYZPublication",
   "title": "Reusing research software",
   "presented_at": [
-    "https://example.org/events/conf-2026/session-3/talk-2"
+    {
+      "object": "https://example.org/events/conf-2026",
+      "schema_type": "xyzri:XYZPresentation",
+      "at_time": "2026-10-19T10:30-07:00"
+    }
   ],
   "attributed_to": [
     {
       "object": "https://example.org/persons/speaker-1",
       "roles": [
-        "marcrel:aut"
+        "marcrel:aut",
+        "obo:CRO_0000100"
       ],
       "schema_type": "dlthings:Attribution"
     }
