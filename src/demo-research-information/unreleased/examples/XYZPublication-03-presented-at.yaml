@@ -1,0 +1,11 @@
+# Slides of a talk that refer to the talk slot (event) at which
+# they were presented
+pid: https://example.org/publications/talk-slides-1
+title: Reusing research software
+kind: bibo:Slideshow
+attributed_to:
+  - object: https://example.org/persons/speaker-1
+    roles:
+      - marcrel:aut
+presented_at:
+  - https://example.org/events/conf-2026/session-3/talk-2

@@ -1,0 +1,10 @@
+schema: src/demo-research-information/unreleased.yaml
+target_class: XYZEvent
+data_sources:
+  - src/demo-research-information/unreleased/examples/XYZEvent-01-conference.yaml
+  - src/demo-research-information/unreleased/examples/XYZEvent-03-talk-slot.yaml
+plugins:
+  JsonschemaValidationPlugin:
+    closed: true
+    include_range_class_descendants: false
+  RecommendedSlotsPlugin:

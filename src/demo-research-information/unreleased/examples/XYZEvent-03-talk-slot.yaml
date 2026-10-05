@@ -1,0 +1,17 @@
+# A talk slot within a session of a conference. The speaker is
+# associated with the talk slot, and the slides are used by it.
+pid: https://example.org/events/conf-2026/session-3/talk-2
+title: "Talk: Reusing research software"
+# conference presentation
+kind: obo:GSSO_006807
+part_of:
+  - https://example.org/events/conf-2026/session-3
+started:
+  at_time: "2026-10-19"
+associated_with:
+  - object: https://example.org/persons/speaker-1
+    roles:
+      # speaker
+      - marcrel:spk
+used:
+  - object: https://example.org/publications/talk-slides-1

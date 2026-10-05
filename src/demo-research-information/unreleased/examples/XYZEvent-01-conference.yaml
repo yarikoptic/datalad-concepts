@@ -1,0 +1,18 @@
+# A multi-day conference with an organizing agent
+pid: https://example.org/events/conf-2026
+title: Example Conference 2026
+kind: bibo:Conference
+started:
+  # it is critical that dates are quoted, otherwise the YAML
+  # parser will turn them into date objects, causing a validation
+  # failure
+  at_time: "2026-10-19"
+ended:
+  at_time: "2026-10-21"
+at_location:
+  - https://example.org/places/conference-venue
+associated_with:
+  - object: https://example.org/organizations/society
+    roles:
+      # organizer
+      - marcrel:orm

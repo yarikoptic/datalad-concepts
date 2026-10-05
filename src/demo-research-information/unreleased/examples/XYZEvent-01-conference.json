@@ -1,0 +1,27 @@
+{
+  "pid": "https://example.org/events/conf-2026",
+  "kind": "bibo:Conference",
+  "schema_type": "xyzri:XYZEvent",
+  "at_location": [
+    "https://example.org/places/conference-venue"
+  ],
+  "title": "Example Conference 2026",
+  "associated_with": [
+    {
+      "object": "https://example.org/organizations/society",
+      "roles": [
+        "marcrel:orm"
+      ],
+      "schema_type": "dlthings:Association"
+    }
+  ],
+  "started": {
+    "schema_type": "dlthings:Start",
+    "at_time": "2026-10-19"
+  },
+  "ended": {
+    "schema_type": "dlthings:End",
+    "at_time": "2026-10-21"
+  },
+  "@type": "XYZEvent"
+}
