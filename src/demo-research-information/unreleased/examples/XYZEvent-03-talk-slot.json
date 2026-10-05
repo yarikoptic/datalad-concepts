@@ -1,0 +1,29 @@
+{
+  "pid": "https://example.org/events/conf-2026/session-3/talk-2",
+  "kind": "obo:GSSO_006807",
+  "schema_type": "xyzri:XYZEvent",
+  "part_of": [
+    "https://example.org/events/conf-2026/session-3"
+  ],
+  "title": "Talk: Reusing research software",
+  "associated_with": [
+    {
+      "object": "https://example.org/persons/speaker-1",
+      "roles": [
+        "marcrel:spk"
+      ],
+      "schema_type": "dlthings:Association"
+    }
+  ],
+  "started": {
+    "schema_type": "dlthings:Start",
+    "at_time": "2026-10-19"
+  },
+  "used": [
+    {
+      "object": "https://example.org/publications/talk-slides-1",
+      "schema_type": "dlthings:Usage"
+    }
+  ],
+  "@type": "XYZEvent"
+}

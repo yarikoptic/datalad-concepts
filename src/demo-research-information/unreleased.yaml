@@ -142,6 +142,21 @@ slots:
         range `Thing`. The concrete, initial use case was PROV's
         Communication.
 
+  presented_at:
+    is_a: influenced_by
+    title: Presented at
+    description: >-
+      Qualified relation to an event at which the subject was presented.
+      For example, the conference (or a session within it) at which
+      slides or a poster were presented, optionally with the time
+      and place of the presentation.
+    range: XYZPresentation
+    notes:
+      - BIBO "presentedAt" is a short-cut property. "Presentation" also
+        identifies the event.
+    exact_mappings:
+      - bibo:presentedAt
+
 
 classes:
   # Classes here are grouped by their nature:
@@ -361,7 +376,11 @@ classes:
     slots:
       - rules
       - distributions
+      - presented_at
     slot_usage:
+      presented_at:
+        multivalued: true
+        inlined_as_list: true
       kind:
         title: Document type
         description: >-
@@ -383,6 +402,79 @@ classes:
         range: XYZInfluence
         multivalued: true
         inlined_as_list: true
+
+  XYZEvent:
+    is_a: Thing
+    mixins:
+      - ActivityMixin
+    title: Event
+    description: >-
+      Something that happens at a particular time and place (physical or
+      online) and that people attend. Examples are a conference, a workshop,
+      a seminar, a webinar, or a session or talk slot within one of those.
+
+      Events can be nested: a talk slot can be `part_of` a session, which
+      can be `part_of` a conference. When an event took place is given by
+      `started` and `ended`. Agents with a particular role in an event (e.g.,
+      organizer, chair, speaker) are identified via `associated_with`.
+      Things that were presented at an event (e.g., slides, a poster) refer
+      to the event via `presented_at`, and a recording of an event can name
+      the event as its generating activity via `generated_by`.
+    slots:
+      - at_location
+      - depiction
+      - part_of
+      - title
+    slot_usage:
+      kind:
+        title: Event type
+        description: >-
+          The type of this event, e.g. conference, workshop, webinar, talk.
+        range: XYZEventType
+      about:
+        title: Topic(s)
+        description: >-
+          Topics of this event.
+        range: XYZTopic
+        multivalued: true
+      at_location:
+        title: Location
+        description: >-
+          Place(s) where the event took place, e.g., a geographic place,
+          a venue, or an online location.
+        multivalued: true
+      associated_with:
+        multivalued: true
+        inlined_as_list: true
+      depiction:
+        range: XYZDepiction
+        multivalued: true
+      part_of:
+        title: Part of
+        description: >-
+          A larger event this event is part of, e.g., the conference that
+          a session or a talk slot belongs to.
+        range: XYZEvent
+        multivalued: true
+      started:
+        title: Start
+      ended:
+        title: End
+      informed_by:
+        range: XYZCommunication
+        multivalued: true
+        inlined_as_list: true
+      influenced_by:
+        range: XYZInfluence
+        multivalued: true
+        inlined_as_list: true
+    comments:
+      - A web page of an event can be declared like for other records,
+        e.g., via `identifiers` or a `foaf:homepage` attribute.
+    exact_mappings:
+      - schema:Event
+    broad_mappings:
+      - prov:Activity
 
   XYZGrant:
     is_a: Grant
@@ -575,8 +667,12 @@ classes:
       A resource that is the output of a publishing process.
     slots:
       - depiction
+      - presented_at
       - rules
     slot_usage:
+      presented_at:
+        multivalued: true
+        inlined_as_list: true
       depiction:
         range: XYZDepiction
         multivalued: true
@@ -759,6 +855,13 @@ classes:
       - prov:Role
       - dcat:Role
 
+  XYZEventType:
+    is_a: Thing
+    title: Event type
+    description: >-
+      Type of an event, e.g., conference, workshop, seminar, webinar,
+      session, or talk.
+
   XYZInstrumentType:
     is_a: Thing
     title: Instrument type
@@ -862,3 +965,29 @@ classes:
     slots:
       - ended
       - started
+
+  XYZPresentation:
+    is_a: ActivityInfluence
+    mixins:
+      - InstantaneousEventMixin
+    title: Presentation
+    description: >-
+      The presentation of an entity (e.g., slides, a poster) at an event.
+      The `object` is the event, such as a conference, or a session or
+      talk slot within one. When the presentation took place can be given
+      via `at_time` with any precision (a date, or a date and time), and
+      where (e.g., a room) via `at_location`. The `roles` can qualify the
+      kind of presentation (e.g., keynote, invited talk, poster).
+    slot_usage:
+      object:
+        title: Event
+        description: >-
+          The event at which the subject was presented.
+        range: XYZEvent
+      at_time:
+        description: >-
+          Timepoint when the presentation took place.
+      at_location:
+        description: >-
+          Location where the presentation took place, if more specific
+          than (or different from) the location of the event.

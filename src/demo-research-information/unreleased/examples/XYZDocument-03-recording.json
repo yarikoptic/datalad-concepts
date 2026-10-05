@@ -1,0 +1,14 @@
+{
+  "pid": "https://example.org/videos/talk-2-recording",
+  "kind": "bibo:AudioVisualDocument",
+  "schema_type": "xyzri:XYZDocument",
+  "title": "Reusing research software (recording)",
+  "generated_by": [
+    {
+      "object": "https://example.org/events/conf-2026/session-3/talk-2",
+      "schema_type": "dlthings:Generation",
+      "at_time": "2026-10-19"
+    }
+  ],
+  "@type": "XYZDocument"
+}

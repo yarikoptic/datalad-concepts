@@ -1,0 +1,15 @@
+# Slides of a talk that refer to the conference at which they were
+# presented, with the date and time of the presentation
+pid: https://example.org/publications/talk-slides-1
+title: Reusing research software
+kind: fabio:Presentation
+attributed_to:
+  - object: https://example.org/persons/speaker-1
+    roles:
+      - marcrel:aut
+      # presenter
+      - obo:CRO_0000100
+presented_at:
+  - object: https://example.org/events/conf-2026
+    # any W3C ISO 8601 precision; a time requires a time zone
+    at_time: "2026-10-19T10:30-07:00"
